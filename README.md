@@ -1,14 +1,14 @@
-# 🍽️ Udayarun — Uber Eats-style Food Delivery Website
+# 🍽️ Udayarun — Cinematic Food-Delivery Experience
 
-A cinematic, Scrolltide.co-inspired food-delivery experience built with **Next.js 15 + Tailwind CSS + Framer Motion**.
+A light-sage, editorial food-delivery experience for **Udayarun Urban Kitchen, Chennai** — built with **Next.js 15 + Tailwind CSS + Framer Motion**.
 
-**28 dishes** in three clearly separated sections:
+**38 dishes** in three clearly separated sections:
 
 | Section | Count | Colour code |
 | --- | --- | --- |
-|  Vegetarian | 10 | green dot |
-|  Non-Vegetarian | 10 | red dot |
-|  Desserts | 8 | pink dot |
+|  Vegetarian | 12 | moss dot |
+|  Non-Vegetarian | 16 | bark dot |
+|  Desserts | 10 | taupe dot |
 
 ---
 
@@ -19,12 +19,14 @@ npm install      # only the first time
 npm run dev      # http://localhost:3000
 ```
 
-Production build:
+Production build (standalone output):
 
 ```bash
 npm run build
-npm start
+npm start            # or just double-click start-site.bat on Windows
 ```
+
+> **Fonts** (Cormorant Garamond + Plus Jakarta Sans) load at **runtime** via `<link>` tags in `app/layout.tsx` — `npm run build` never fetches Google Fonts, so Vercel deploys with zero font/network dependency. Fallbacks: Georgia serif / system sans.
 
 ---
 
@@ -32,7 +34,7 @@ npm start
 
 | Route | What's there |
 | --- | --- |
-| `/` | Hero + search, category filter strip, full 28-dish menu grid, How-it-works, newsletter CTA, footer |
+| `/` | Hero + search, category filter strip, full 38-dish menu grid, kitchens, signature rail, how-it-works, closing CTA, footer |
 | `/menu` | Full menu page with the same filters + a veg / non-veg / dessert legend |
 | `/menu?category=veg` | Deep links that pre-filter the grid (`veg`, `nonveg`, `dessert`, `all`) |
 | `/cart` | Full-page cart: quantity steppers, remove, bill summary, place-order confirmation |
@@ -47,9 +49,10 @@ The cart is **global** — a slide-out drawer on every page plus a dedicated pag
 - **Live search** — type in the hero search box, the grid filters by dish, description, restaurant, spice level and jumps you to results.
 - **Category filters** — Veg · Non-Veg · Desserts, instant client-side filtering.
 - **Cart with quantity control** — add, increment, decrement (drops the line at 0), remove, bill summary with ₹40 delivery fee.
-- **Scrolltide-style scroll reveals** — IntersectionObserver-driven fade-ups plus Framer Motion for the steps section.
+- **Cinematic scroll reveals** — IntersectionObserver-driven fade-ups plus Framer Motion for the steps section.
 - **Responsive** — 1 / 2 / 3 / 4 column grid from mobile to XL desktop.
 - **Sticky glass header** with live cart count badge.
+- **Contacts wired** — +91 63744 95003 · udayakumari1620@gmail.com · instagram @uu_lvy._.18
 
 ---
 
@@ -58,26 +61,31 @@ The cart is **global** — a slide-out drawer on every page plus a dedicated pag
 ```
 ubereat/
 ├── app/
-│   ├── layout.tsx        # Fonts (DM Sans + Playfair Display), CartProvider, metadata
+│   ├── layout.tsx        # Metadata, runtime font <link>s, CartProvider
 │   ├── page.tsx          # Home
 │   ├── menu/page.tsx     # Menu (reads ?category=)
 │   ├── cart/page.tsx     # Cart page
-│   └── globals.css       # Tailwind layers + reveal animations
+│   └── globals.css       # Tailwind layers + font vars + reveal animations
 ├── components/
 │   ├── Header.tsx        # Sticky nav + cart badge
-│   ├── Hero.tsx          # Headline + search + animated plate
+│   ├── Hero.tsx          # Headline + search
 │   ├── CategoryStrip.tsx # All / Veg / Non-Veg / Dessert pills
-│   ├── DishCard.tsx      # Dish card with veg/non-veg dot, price, rating
+│   ├── DishCard.tsx      # Card with veg/non-veg dot, price, rating
+│   ├── DishImage.tsx     # Retry-once image with UDAYARUN-stamped SVG fallback
 │   ├── MenuSection.tsx   # Filtering grid
+│   ├── Kitchens.tsx / SignatureRail.tsx / Moments.tsx / ExperienceBand.tsx
 │   ├── HowItWorks.tsx    # 3-step explainer + quote
-│   ├── Footer.tsx        # Links incl. deep-linked category filters
-│   └── CartDrawer.tsx    # Slide-in cart
-├── data/dishes.ts        # ⭐ All 28 dishes + categories + hero stats
+│   ├── ChefTable.tsx + ReserveModal.tsx      # Chef-table reservation modal
+│   ├── OrderConfirmModal.tsx                 # Checkout form → receipt UDY-XXXXXX
+│   ├── CartDrawer.tsx    # Slide-in cart
+│   └── Footer.tsx        # Contacts + deep-linked category filters
+├── data/dishes.ts        # ⭐ All 38 dishes + categories + hero stats
 ├── lib/
 │   ├── store.tsx         # Cart context (add / decrement / remove / clear)
-│   └── filterDishes.ts   # Pure category + search filtering logic
-├── tailwind.config.js    # Brand palette + fonts
-└── README.md
+│   ├── filterDishes.ts   # Pure category + search filtering logic
+│   └── useReveal.ts      # Scroll-reveal hook
+├── tailwind.config.js    # Brand palette + font stacks
+└── start-site.bat        # One-click standalone production server
 ```
 
 ---
@@ -86,11 +94,13 @@ ubereat/
 
 | Token | Hex | Used for |
 | --- | --- | --- |
-| `brand-green` | `#d7ee62` | accents, veg indicator background |
-| `brand-orange` | `#dd7052` | highlights, hover underlines |
-| `brand-dark` | `#213329` | headings, buttons |
-| `brand-sand` | `#f5f3ee` | page background |
-| `brand-sage` | `#e5efdc` | hero / banner sections |
+| `brand-sage` | `#E6EFE6` | page background |
+| `brand-sand` | `#FBF9F3` | warm ivory cards |
+| `brand-ink` | `#1E2A23` | display headings |
+| `brand-dark` | `#2A3830` | body copy |
+| `brand-gold` | `#A68A5B` | antique-gold hairlines & italics |
+| `moss / bark / taupe` | `#6B7F6E` / `#4A4440` / `#A79B8B` | veg / non-veg / dessert markers |
+| `brand-line` | `rgba(0,0,0,0.06)` | the one hairline used everywhere |
 
 ---
 
@@ -100,7 +110,7 @@ Open `data/dishes.ts` and append to the array:
 
 ```ts
 {
-  id: "29", name: "Your Dish Name",
+  id: "39", name: "Your Dish Name",
   description: "Short, appetising one-liner.",
   price: 320,
   image: "https://images.unsplash.com/photo-XXXX?auto=format&fit=crop&w=800&q=85",

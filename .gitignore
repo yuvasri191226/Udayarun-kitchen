@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Package manager
+yarn.lock
+pnpm-lock.yaml
+
+# Backup
+backup/
+
+# Dev server logs
+*.log
+serve-err*.log
+serve-out*.log
+tsconfig.tsbuildinfo

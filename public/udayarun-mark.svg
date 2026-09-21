@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Udayarun monogram">
+  <circle cx="32" cy="32" r="30.5" fill="#E6EFE6"/>
+  <circle cx="32" cy="32" r="30.5" fill="none" stroke="#B08D4F" stroke-width="1.6"/>
+  <circle cx="32" cy="32" r="26.5" fill="none" stroke="#B08D4F" stroke-width="0.8" opacity="0.55"/>
+  <text x="32" y="41.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-style="italic" font-weight="500" font-size="30" fill="#213329">U</text>
+  <circle cx="32" cy="48.5" r="1.4" fill="#B08D4F"/>
+</svg>

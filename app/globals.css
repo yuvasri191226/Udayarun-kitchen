@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Font variables ─────────────────────────────────────────────
+   Declared here instead of by next/font. The Google webfonts are
+   fetched at RUNTIME by the <link> tags in app/layout.tsx — the
+   build never touches Google, so Vercel deploys with no font
+   network dependency. Each variable carries its own offline
+   fallback stack, so typography never breaks. */
+:root {
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    UDAYARUN — base layer
    Ultra-minimal editorial kitchen: soft sage paper (#E6EFE6),

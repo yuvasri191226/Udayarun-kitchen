@@ -36,7 +36,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        // Wired to the next/font CSS variables declared in app/layout.tsx
+        // Wired to the CSS variables declared in app/globals.css (:root);
+        // the webfonts themselves load at runtime via <link> in app/layout.tsx.
         body: [
           "var(--font-body)",
           "Plus Jakarta Sans",

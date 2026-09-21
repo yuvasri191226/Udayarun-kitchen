@@ -1,26 +1,14 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/store";
 
 /**
- * Luxury serif for display type — Cormorant Garamond.
- * Clean geometric sans for everything else — Plus Jakarta Sans.
+ * Typography — Cormorant Garamond (display) + Plus Jakarta Sans (body).
+ * Webfonts load at RUNTIME via the <link> tags in <head> below, so the
+ * production build never fetches Google Fonts — Vercel deploys cleanly
+ * with zero network dependency. If a browser can't reach Google Fonts,
+ * the stacks in globals.css degrade gracefully (Georgia serif / system sans).
  */
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Udayarun | An open-dining table, delivered",
@@ -47,12 +35,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${jakarta.variable} ${cormorant.variable}`}
-    >
+    <html lang="en">
       <head>
         <link rel="icon" type="image/svg+xml" href="/udayarun-mark.svg" />
+        {/* Fonts — runtime <link>, not next/font (build-safe on Vercel) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        />
       </head>
       <body className="overflow-x-hidden bg-brand-sage text-brand-dark font-body antialiased">
         <CartProvider>{children}</CartProvider>

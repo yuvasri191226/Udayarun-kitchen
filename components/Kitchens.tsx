@@ -19,7 +19,7 @@ export default function Kitchens() {
   return (
     <section
       id="kitchens"
-      className="px-[5.5vw] py-24 md:py-32 lg:py-36"
+      className="px-[5.5vw] py-12 md:py-16 lg:py-20"
       aria-labelledby="kitchens-title"
     >
       <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">

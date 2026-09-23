@@ -25,7 +25,7 @@ export default function CartPage() {
   const grandTotal = totalPrice + deliveryFee;
 
   return (
-    <main className="min-h-screen bg-brand-sage px-[5.5vw] pb-24 pt-32">
+    <main className="bg-brand-sage px-[5.5vw] pb-14 pt-14">
       <div className="mx-auto max-w-4xl">
         <p className="type-eyebrow mb-3 flex items-center gap-3">
           <span className="h-px w-8 bg-brand-gold" />

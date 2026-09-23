@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 import Header from "@/components/Header";
@@ -17,7 +17,7 @@ import { filterDishes, type DishFilter } from "@/lib/filterDishes";
 import { useReveal } from "@/lib/useReveal";
 
 /**
- * Home — the full open-dining narrative, top to bottom:
+ * Home â€” the full open-dining narrative, top to bottom:
  *
  *   Hero            the opening frame
  *   SignatureRail   endless ribbon of the chef's signatures
@@ -85,12 +85,12 @@ export default function Home() {
 
         <HowItWorks />
 
-        {/* ── Newsletter ── */}
+        {/* â”€â”€ Newsletter â”€â”€ */}
         <section
           id="letter"
-          className="grain relative overflow-hidden px-[5.5vw] py-24 md:py-32 lg:py-36"
+          className="grain relative overflow-hidden px-[5.5vw] py-12 md:py-16 lg:py-20"
         >
-          <div className="reveal relative overflow-hidden rounded-card border border-black/[0.06] bg-brand-sand px-8 py-16 text-center shadow-min md:px-16 md:py-24 lg:py-28">
+          <div className="reveal relative overflow-hidden rounded-card border border-black/[0.06] bg-brand-sand px-8 py-10 text-center shadow-min md:px-10 md:py-12 lg:px-12 lg:py-14">
             <span className="rule-gold mx-auto mb-7 block w-24" aria-hidden />
 
             <p className="type-eyebrow mb-5">The Sunday letter</p>
@@ -104,7 +104,7 @@ export default function Home() {
             </h2>
 
             <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-brand-muted md:text-[15px]">
-              One letter a week — the plates we&apos;re testing, the catch
+              One letter a week â€” the plates we&apos;re testing, the catch
               coming off the boats, and the occasional table we hold back for
               readers.
             </p>
@@ -132,7 +132,7 @@ export default function Home() {
             </form>
 
             <p className="mt-4 text-[11px] uppercase tracking-wider2 text-brand-muted">
-              No spam · unsubscribe in one click
+              No spam Â· unsubscribe in one click
             </p>
           </div>
         </section>

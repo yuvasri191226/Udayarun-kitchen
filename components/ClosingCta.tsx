@@ -18,7 +18,7 @@ export default function ClosingCta() {
 
   return (
     <section
-      className="relative overflow-hidden px-[5.5vw] py-24 md:py-32 lg:py-36"
+      className="relative overflow-hidden px-[5.5vw] py-12 md:py-16 lg:py-20"
       aria-labelledby="cta-title"
     >
       <span

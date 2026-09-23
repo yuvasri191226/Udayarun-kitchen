@@ -21,7 +21,7 @@ export default function Moments() {
 
   return (
     <section
-      className="overflow-hidden bg-brand-mist py-24 md:py-32 lg:py-36"
+      className="overflow-hidden bg-brand-mist py-12 md:py-16 lg:py-20"
       aria-labelledby="moments-title"
     >
       <div className="mb-10 flex flex-wrap items-end justify-between gap-6 px-[5.5vw]">
